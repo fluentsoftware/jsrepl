@@ -91,7 +91,7 @@
   ]
   includes: []
   engine: 'langs/coffee-script/jsrepl_coffee.coffee'
-  minifier: 'uglify'
+  minifier: 'none'
 
 @JSREPL::Languages::brainfuck =
   system_name: 'brainfuck'
@@ -396,3 +396,21 @@
   includes: []
   engine: 'langs/roy/jsrepl_roy.coffee'
   minifier: 'closure'
+
+@JSREPL::Languages::clojure =
+  system_name: 'clojure'
+  name: 'Clojure'
+  extension: 'clj'
+  matchings: [
+    ['(', ')']
+    ['[', ']']
+    ['{', '}']
+  ]
+  scripts: [    
+    'util/console.js'
+    'langs/clojure/yui-min.js'
+    'langs/clojure/replclient.js'
+  ]
+  includes: []
+  engine: 'langs/clojure/jsrepl_clojure.coffee'
+  minifier: 'none'  
