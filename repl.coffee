@@ -132,8 +132,13 @@ class Sandbox extends EventEmitter
       if @input_server?
         @post type: 'set_input_server', data: @input_server
 
+    if window.killrepl?
+      window.killrepl()
+
     # Remove previous onmsg handler on the window if exists.
     window.removeEventListener 'message', @onmsg, false
+
+    window.killrepl = => window.removeEventListener 'message', @onmsg, false
 
     if not workerSupported or not workerFriendly
       # Worker not supported; create a new iframe sandbox replacing the old one.
