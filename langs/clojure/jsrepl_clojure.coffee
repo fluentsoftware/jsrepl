@@ -3,8 +3,7 @@ class self.JSREPLEngine
     @inspect = @sandbox.console.inspect
     @functionClass = @sandbox.Function
     @sandbox.__eval = @sandbox.eval    
-    @client = new ReplClient('clojure',@error,@output,@result)
-    ready()
+    @client = new ReplClient('clojure',@error,@output,@result,ready)
 
   Eval: (command) ->
     @client.exec(command)

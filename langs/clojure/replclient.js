@@ -1,13 +1,17 @@
-this.Math.random = parent.Math.random
 
-function ReplClient(lang,error,output,result) {
-  var sid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        r = Math.random() * 16 | 0
-        v = c == 'x' ? r : (r & 0x3|0x8)
-        return v.toString(16)
-      })
+function ReplClient(lang,error,output,result,ready) {
   
   var commands = []
+  var sid
+
+  YUI().use("jsonp", function(Y) {
+    // need a service to get a random number as inside an iframe, Math.random always gives
+    // the same result!
+    Y.jsonp('http://repl.fluentlearning.co.uk/uuid.json?jsonp={callback}', function(data) {
+      sid = data.uuid
+      ready()
+    })
+  })
   
   this.exec = function(command) {
     var runCmd
