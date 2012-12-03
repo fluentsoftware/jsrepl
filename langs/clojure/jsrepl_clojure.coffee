@@ -6,7 +6,7 @@ class self.JSREPLEngine
     @client = new ReplClient('clojure',@error,@output,@result)
     ready()
 
-  Eval: (command) =>
+  Eval: (command) ->
     @client.exec(command)
 
   GetNextLineIndent: (command) ->
