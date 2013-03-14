@@ -414,3 +414,20 @@
   includes: []
   engine: 'langs/clojure/jsrepl_clojure.coffee'
   minifier: 'none'  
+
+@JSREPL::Languages::php =
+  system_name: 'php'
+  name: 'php'
+  extension: 'php'
+  matchings: [
+    ['(', ')']
+    ['[', ']']
+    ['{', '}']
+  ]
+  scripts: [        
+    'langs/php/PHP.js',
+    'langs/php/localfs.js'
+  ]
+  includes: []
+  engine: 'langs/php/jsrepl_php.coffee'
+  minifier: 'none'  
